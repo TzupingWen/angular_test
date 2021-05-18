@@ -1,23 +1,36 @@
 <h2>Products:</h2>
 
 <div *ngFor="let product of products; index as productId">
+  <!-- (結構型指令)*ngFor，會把這個div針對列表中的每個產品進行復寫 -->
+  <!-- 結構型指令會透過新增、刪除和操作元素來調整或重塑DOM結構 -->
   <h3>
     <a
       [title]="product.name + ' details'"
-      [routerLink]="['/products', productId]"
+      [routerLink]="['/products', product.id]"
     >
+    <!-- []可將標題設定為此產品的名稱，透過屬性繫結[]可在表示式中使用屬性值 -->
       {{product.name}}
+      <!-- {{}}Angular的插值語法，可把屬性值渲染為文字 -->
     </a>
 
     <p *ngIf="product.description">
+      <!-- 在<p>元素使用*ngIf，只讓當前產品有描述 -->
       Description: {{product.description}}
     </p>
+    <!-- PS.若該產品沒有描述，Angular不會建立<p>元素，該產品的description屬性為空 -->
 
     <button (click)="share()">
+      <!-- 將click事件繫結到product-list.component.ts的share()方法；事件繫結要使用()，比如(click) -->
       Share This!
     </button>
 
+    <!-- 將ProductAlertsComponent顯示為ProductListComponent的子級，須新增選擇器<app-product-alerts> -->
+    <!-- 使用屬性繫結將當前產品輸入傳給此元件 -->
     <app-product-alerts [product]="product" (notify)="onNotify()">
     </app-product-alerts>
   </h3>
 </div>
+
+<!-- 將資料傳遞給子元件 -->
+<!-- 通知功能：在ProductListComponent的產品資訊中檢查產品價格，若價格大於700美元，會顯示通知的按鈕，當產品上市銷售時，使用者可透過該按鈕註冊通知。 -->
+<!-- 建立子元件ProductAlertComponent，該子元件可從其父元件ProductListComponent接收資料 -->

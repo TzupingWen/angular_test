@@ -1,6 +1,8 @@
 <h3>Shipping Prices</h3>
 
+<!-- 利用async管道修改配送元件 -->
 <div class="shipping-item" *ngFor="let shipping of shippingCosts | async">
     <span>{{ shipping.type }}</span>
     <span>{{ shipping.price | currency }}</span>
 </div>
+<!-- async管道從資料流中返回最新值，並在所屬元件的生命期內持續返回。 -->

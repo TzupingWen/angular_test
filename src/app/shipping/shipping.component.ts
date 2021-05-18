@@ -10,10 +10,12 @@ import { CartService } from '../cart.service';
 export class ShippingComponent implements OnInit {
   shippingCosts;
 
+  // 把cartService注入到ShippingComponent的建構函式中
   constructor(
     private cartService: CartService
-  ) { }
+  ) {}
 
+  // 利用cartService的getShippingPrices()方法設定shippingCosts屬性
   ngOnInit() {
     this.shippingCosts = this.cartService.getShippingPrices();
   }

@@ -3,6 +3,7 @@
 <div *ngIf="product">
   <h3>{{product.name}}</h3>
   <h4>{{product.price|currency}}</h4>
+  <!-- currency管道將product.price從數字轉換為貨幣字串；管道：在html範本中轉換資料的方法 -->
   <p>{{product.description}}</p>
 
   <button (click)="addToCart(product)">Buy!</button>

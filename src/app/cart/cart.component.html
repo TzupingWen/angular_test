@@ -8,3 +8,24 @@
   <span>{{item.name}}</span>
   <span>{{item.price | currency}}</span>
 </div>
+
+<!-- 使用ngSubmit事件繫結偵聽表單提交，並用checkoutForm的值為引數呼叫onSubmit()方法 -->
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+  <!-- 新增name和address的input欄位，每個欄位都有一個formControlName屬性並繫結到checkoutForm表單控制元件，以將name和address繫結到input欄位 -->
+  <div>
+    <label for="name">
+      Name
+    </label>
+    <input id="name" type="text" formControlName="name">
+  </div>
+
+  <div>
+    <label for="address">
+      Address
+    </label>
+    <input id="address" type="text" formControlName="address">
+  </div>
+
+  <button class="button" type="submit">Purchase!</button>
+</form>

@@ -5,12 +5,14 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CartService {
+  // 定義items屬性將當前商品的陣列儲存在購物車中
   items = [];
 
   constructor(
     private http: HttpClient
-    ) {}
+  ) {}
 
+  // 定義將商品新增到購物車、返回購物車及清除購物車的方法
   addToCart(product) {
     this.items.push(product);
   }
@@ -25,8 +27,9 @@ export class CartService {
   }
 
   getShippingPrices() {
-    return this.http.get('/asset/shipping.json');
+    return this.http.get('/assets/shipping.json');
   }
 
   
+
 }
